@@ -1,0 +1,15 @@
+{
+  "ignore":["node_modules"],
+  "watch":[
+      "./app.ts",
+      "./config/*.ts",
+      "./Middleware/*.ts",
+      "./Modules/*.ts",
+      "./routers/router/*.ts",
+      "./routers/*.ts",
+      "./Controller/*.ts",
+      "./Modules/Dao/*ts"
+  ],
+  "exec":"ts-node app.ts", 
+  "ext": "ts" 
+}
