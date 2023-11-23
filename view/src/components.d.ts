@@ -7,6 +7,8 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
+    ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCarousel: typeof import('element-plus/es')['ElCarousel']
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
@@ -14,16 +16,14 @@ declare module 'vue' {
     ElInput: typeof import('element-plus/es')['ElInput']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
-    En: typeof import('./components/en.vue')['default']
-    Enumu: typeof import('./components/enumu.vue')['default']
+    ElPagination: typeof import('element-plus/es')['ElPagination']
+    ElTabPane: typeof import('element-plus/es')['ElTabPane']
+    ElTabs: typeof import('element-plus/es')['ElTabs']
     GoodList: typeof import('./components/goodList.vue')['default']
-    GoodsList: typeof import('./components/goodsList.vue')['default']
     IEpCircleCheck: typeof import('~icons/ep/circle-check')['default']
-    IEpCircleCheckFilled: typeof import('~icons/ep/circle-check-filled')['default']
     IEpDArrowRight: typeof import('~icons/ep/d-arrow-right')['default']
     IEpSearch: typeof import('~icons/ep/search')['default']
     IEpShoppingCart: typeof import('~icons/ep/shopping-cart')['default']
-    Menu: typeof import('./components/menu.vue')['default']
     MyMenu: typeof import('./components/myMenu.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

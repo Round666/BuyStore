@@ -3,7 +3,7 @@ import {defineProps,ref,watch,defineEmits} from 'vue'
 const emits = defineEmits(['change'])
 
 const props = defineProps({
-    'val':String,
+    'val':Number,
     'type':String
 })
 

@@ -1,14 +1,23 @@
 <script setup>
-import { defineProps,inject } from 'vue';
-const props = defineProps(['list','isMore'])
-const List  = props.list
-const isMore = props.isMore
+import { defineProps,inject,toRefs } from 'vue';
+const props = defineProps({
+    'List':Object,
+    'isMore':Boolean
+})
+// 因为 ref 是对传入数据的拷贝，原始值 data 的改变并不影响 msg
+// 但 toRef 是对传入数据的引用，原始值 data 改变会影响 msg
+// 这里使用torefs包裹props属性解决父组件传入值响应式丢失的情况
+const {List,isMore}  = toRefs(props) 
+
 // 服务端地址
 const $target = inject('$remoteServer')
 </script>
 
 <template>
   <div class="list-root">
+    <div v-if="List?.length==0">
+        <p>抱歉!相关商品未找到</p>
+    </div>
     <ul>
         <li v-for="(item,index) in List" :key="index">
             <router-link to="#">
@@ -41,8 +50,8 @@ const $target = inject('$remoteServer')
     >ul{
         padding-left:12px;
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 创建 4 列，每列宽度相等 */
-        grid-template-rows: repeat(2, 1fr); /* 创建 2 行，每行高度为 100px */
+        grid-template-columns: repeat(auto-fit, minmax(260px, 0fr)); /* 创建 4 列，每列宽度相等 */
+        grid-template-rows: repeat(auto-fit, minmax(100px, 1fr)); /* 创建 2 行，每行高度为 100px */
         gap: 12px; /* 设置列间距和行间距 */
         list-style: none;
         >li{
@@ -56,6 +65,11 @@ const $target = inject('$remoteServer')
                 align-items: center;
                 gap: 8px;
                 >h4{
+                    white-space: nowrap; /* 不换行 */
+                    overflow: hidden; /* 隐藏溢出部分 */
+                    text-overflow: ellipsis;
+                    width: 90%;
+                    text-align: center;
                     margin-top: 32px;
                     font-weight: 500;
                     color: black;

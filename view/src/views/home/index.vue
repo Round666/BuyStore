@@ -87,7 +87,7 @@ onMounted(async () => {
               <img :src="$target + 'public/imgs/phone/phone.png'" alt="">
             </div>
           </div>
-          <goodsList :list="productList.phoneList" :is-more="true"></goodsList>
+          <goodsList :List="productList.phoneList" :isMore="true"></goodsList>
         </div>
       </article>
 
@@ -113,7 +113,7 @@ onMounted(async () => {
               <img :src="$target + 'public/imgs/appliance/appliance-promo2.png'" alt="">
             </div>
           </div>
-          <goodsList :list="productList.applianceList" :is-more="true"></goodsList>
+          <goodsList :List="productList.applianceList" :isMore="true"></goodsList>
         </div>
       </article>
 
@@ -141,7 +141,7 @@ onMounted(async () => {
               <img :src="$target + 'public/imgs/appliance/appliance-promo2.png'" alt="">
             </div>
           </div>
-          <goodsList :list="productList.accessoryList" :is-more="true"></goodsList>
+          <goodsList :List="productList.accessoryList" :isMore="true"></goodsList>
         </div>
       </article>
 
@@ -184,14 +184,13 @@ onMounted(async () => {
 }
 
 .main-box {
-  background-color: rgb(239, 239, 239);
+  background-color: $context-backcolor;
   margin-top: 16px;
 }
 
 .household-describe,.parts-describe{
   display: flex;
   flex-direction: column;
-
   >div>img {
     box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
   }
@@ -206,6 +205,9 @@ onMounted(async () => {
 
 .household-describe-img,.parts-describe-img {
   display: flex;
+  .list-root {
+    flex: 1;
+  }
 }
 
 .household-txt,.parts-txt{

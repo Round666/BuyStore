@@ -13,7 +13,7 @@
         </div>
         <div class="footer-link">
             <div v-for="(item, index) in link" :key="index">
-                <el-button type="text" class="footer-s">{{ item.name }}</el-button>
+                <el-button :link="true" class="footer-s">{{ item.name }}</el-button>
                 <span class="footer-s r">{{ index != link.length - 1 ? '|' : '' }}</span>
             </div>
         </div>
