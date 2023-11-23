@@ -3,7 +3,6 @@ import { Carousel, PromoProduct, HotProduct } from '@/api';
 import { onMounted, ref, inject } from 'vue'
 import goodsList from '@/components/goodlist.vue';
 import myMenu from '@/components/myMenu.vue';
-
 // 服务端地址
 const $target = inject('$remoteServer')
 // 轮播图
@@ -64,6 +63,7 @@ onMounted(async () => {
 
 <template>
   <div>
+    
     <div class="context">
       <!-- 轮播图 -->
       <el-carousel height="460px">

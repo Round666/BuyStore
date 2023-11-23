@@ -1,22 +1,23 @@
 <template>
   <div class="header-root">
+    <myLogin></myLogin>
     <div class=" header-nav">
       <div class="context header-nav-context">
         <ul class="header-options">
           <li>
-            <el-button :link="true">登陆</el-button>
+            <el-button :link="true" class="size" @click="login">登陆</el-button>
             <span class="header-login-split">|</span>
-            <el-button :link="true">注册</el-button>
+            <el-button :link="true" class="size">注册</el-button>
           </li>
           <li>
-            <el-button :link="true">我的订单</el-button>
+            <el-button :link="true" class="size">我的订单</el-button>
           </li>
           <li>
-            <el-button :link="true">我的收藏</el-button>
+            <el-button :link="true" class="size">我的收藏</el-button>
           </li>
           <li>
 
-            <el-button :link="true">
+            <el-button :link="true" class="size">
               <i-ep-shopping-cart class="icon-shop"></i-ep-shopping-cart>
               购物车
             </el-button>
@@ -28,7 +29,7 @@
     <div class="context header-tab">
       <el-menu class="el-menu-demo" mode="horizontal" :router="true"
         :default-active="router.currentRoute.value.path">
-        <div class="header-tab-logo">
+        <div class="header-tab-logo" @click="this.$router.push({path:'/'})">
           <img src="@/assets/images/logo.png">
         </div>
         <el-menu-item v-for="(item, index) in menuTab" :key="index" :index="item.route">
@@ -50,6 +51,10 @@
 <script setup>
 import { ref } from "vue"
 import { useRouter } from 'vue-router';
+import myLogin from '@/components/Login.vue'
+import useStore from '@/stores'
+
+const { user } = useStore()
 
 const router = useRouter();
 
@@ -76,12 +81,21 @@ const jump = () => {
   )
   input.value = null
 }
+
+const login = ()=>{
+  user.setIsLogin(true)
+}
 </script>
 
 <style lang='scss' scoped>
+.size{
+  font-size: 16px;
+  color: #adb5bd;
+}
+
 .header-nav {
   background-color: $header-root-backcolor;
-  height: 38px;
+  height: 48px;
 }
 
 .header-options {
@@ -135,5 +149,11 @@ const jump = () => {
 
 .search-icon {
   cursor: pointer;
+}
+
+.el-menu-demo{
+  >div{
+    cursor: pointer;
+  }
 }
 </style>
