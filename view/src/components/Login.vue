@@ -12,20 +12,35 @@ const loginForm = ref({
   pwd: ''
 })
 
+// 密码框检验规则
+const rules = ref({
+  user: [
+    { required: true, message: '请输入账户', trigger: 'blur' },
+    { min: 3, max: 5, message: '长度必须大于三', trigger: 'blur' },
+  ],
+  pwd: [
+    {
+      required: true,
+      message: '请输入密码',
+      trigger: 'change',
+    },
+  ]
+})
+
 </script>
 
 <template>
   <div>
     <el-dialog title="登陆" center width="300px" v-model="isLogin">
-      <el-form status-icon size="large" :model="loginForm" >
-        <el-form-item>
+      <el-form status-icon size="large" :model="loginForm" :rules="rules">
+        <el-form-item prop="user">
           <el-input v-model="loginForm.user" placeholder="请输入账户" 
           clearable :prefix-icon="User"
           size="large"/>
-        </el-form-item>
-        <el-form-item>
+        </el-form-item >
+        <el-form-item prop="pwd">
           <el-input v-model="loginForm.pwd" placeholder="请输入密码" 
-          clearable :prefix-icon="Key"
+          clearable :prefix-icon="Key" type="password"
           size="large"/>
         </el-form-item>
         <el-form-item>
